@@ -14515,20 +14515,26 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Stock-Market-Analysis">Stock Market Analysis<a class="anchor-link" href="#Stock-Market-Analysis">&#182;</a></h1><h5 id="Shubham-Mittal---CMSC320-Final-Project-Tutorial">Shubham Mittal - CMSC320 Final Project Tutorial<a class="anchor-link" href="#Shubham-Mittal---CMSC320-Final-Project-Tutorial">&#182;</a></h5><h3 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h3><p>Interest in the stock market has been increasing especially after the introduction of more user friendly apps such as Robinhood and Coinbase. Financial data has also started becoming more accessible partly fueling this increase. The pandemic shook the global economy and the market experienced a lot of volatility. As a result, at the beginning of the pandemic, people started moving away from the stock market to more low risk investments. However, as the pandemic has continued, a new surge of people has started coming back to the stock market.</p>
-<p>In this tutorial, I will analyze stock market data in different intervals to identify intraday, weekly, monthly, and yearly trends. These trends could help identify periods of time that may be more lucrative for trading (a certain time of day or a certain month of a year) allowing investors to make better trading decisions. This tutorial will also help you gain a better understanding of the data science pipeline and hopefully allow you to analyze stock market data for your own purposes.</p>
-<p>(Need to add links to sources)
-Less likely to invest - <a href="https://www.statista.com/topics/7856/covid-19-and-investment-behavior-worldwide/#dossierKeyfigures">https://www.statista.com/topics/7856/covid-19-and-investment-behavior-worldwide/#dossierKeyfigures</a>
-Started investing more - <a href="https://www.cnbc.com/2021/04/08/a-large-chunk-of-the-retail-investing-crowd-got-their-start-during-the-pandemic-schwab-survey-shows.html">https://www.cnbc.com/2021/04/08/a-large-chunk-of-the-retail-investing-crowd-got-their-start-during-the-pandemic-schwab-survey-shows.html</a></p>
-<h3 id="2.-Required-Tools">2. Required Tools<a class="anchor-link" href="#2.-Required-Tools">&#182;</a></h3><p>In order to understand this tutorial and follow along, you will need to have a basic understanding of Python. We will be using Python 3.8 in this tutorial and the following libraries:</p>
+<h1 id="Stock-Market-Analysis">Stock Market Analysis<a class="anchor-link" href="#Stock-Market-Analysis">&#182;</a></h1><h5 id="Shubham-Mittal---CMSC320-Final-Project-Tutorial">Shubham Mittal - CMSC320 Final Project Tutorial<a class="anchor-link" href="#Shubham-Mittal---CMSC320-Final-Project-Tutorial">&#182;</a></h5><h3 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h3><p>Interest in the stock market has been increasing especially after the introduction of more user friendly trading apps such as Robinhood. Financial data has also started becoming more accessible in part fueling this increase. The pandemic shook the global economy and the market experienced a lot of volatility. As a result, at the beginning of the pandemic, people started <a href="https://www.statista.com/topics/7856/covid-19-and-investment-behavior-worldwide/#dossierKeyfigures">moving away</a> from the stock market to more low risk investments. However, as the pandemic has continued, a <a href="https://www.cnbc.com/2021/04/08/a-large-chunk-of-the-retail-investing-crowd-got-their-start-during-the-pandemic-schwab-survey-shows.html">new surge of people</a> have started coming back to the stock market.</p>
+<p>Data analysis of the stock market can help traders and investors make decisions about buying and selling securities and gain an edge in the market. In this tutorial, I will analyze stock market data in different intervals to identify intraday, monthly, and yearly trends. Then we will use machine learning to also verify and predict trends. These trends could help identify periods of time that may be more lucrative for trading (a certain time of day or a certain month of a year) allowing investors to make better trading decisions. This tutorial will also help you gain a better understanding of the data science pipeline and hopefully allow you to analyze stock market data for your own purposes.</p>
+<p>The data science pipeline in this tutorial will consist of the following steps:</p>
 <ul>
-<li>Pandas</li>
-<li>NumPy</li>
-<li>yfinance </li>
-<li>yahoofinancials
-Pandas and NumPy will be useful to manipulate and store our data. We will be getting financial data from Yahoo Finance using the yfinance and yahoofinancials libraries. </li>
+<li>Data Collection</li>
+<li>Data Cleaning &amp; Processing</li>
+<li>Visualization</li>
+<li>Analysis &amp; Hypothesis Testing</li>
+<li>Conclusions &amp; Insights</li>
 </ul>
-<p>All of the above libraries can be installed using pip (which is recommended) but the links (NEED TO ADD LINKS TO EACH LIBRARY) provide more detailed information on downloading for specific OS's.</p>
+<h3 id="2.-Required-Tools">2. Required Tools<a class="anchor-link" href="#2.-Required-Tools">&#182;</a></h3><p>In order to understand this tutorial and follow along, you will need to have a basic understanding of Python. <a href="https://developers.google.com/edu/python/?hl=en">Click here</a> for a quick refresher of python. We will be using Python 3.8 in this tutorial and the following libraries:</p>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/getting_started/install.html">Pandas</a></li>
+<li><a href="https://numpy.org/install/">NumPy</a></li>
+<li><a href="https://pypi.org/project/yfinance/">yfinance</a> </li>
+<li><a href="https://pypi.org/project/DateTime/">datetime</a></li>
+<li><a href="https://pypi.org/project/pandasql/">pandassql</a></li>
+</ul>
+<p>Pandas and NumPy will be useful to manipulate and store our data. We will be getting financial data from Yahoo Finance using the yfinance library. There are also other services to obtain stock data such as the <a href="https://www.bloomberg.com/professional/product/server-api/?bbgsum-page=DG-WS-PROF-BLOG-POST-126213&amp;tactic-page=529917">Bloomberg Finance API</a> and <a href="https://demo.quandl.com/">Quandl</a> and you may choose to use any of them if you prefer.</p>
+<p>All of the above libraries can be installed using pip (which is recommended) but the links provide more detailed information on downloading for specific OS's. Succesful execution of the cell below should import all the necessary libraries required for the rest of this tutorial.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14537,7 +14543,1187 @@ Pandas and NumPy will be useful to manipulate and store our data. We will be get
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-python"><pre><span></span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Importing dependencies for purposes as defined above</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yfin</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandasql</span> <span class="k">as</span> <span class="nn">psql</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="3.-Data-Collection">3. Data Collection<a class="anchor-link" href="#3.-Data-Collection">&#182;</a></h3><p>The first step of the data science pipeline is to obtain the data, in this case using the yfinance library. For the purposes of this tutorial, we will be analyzing two tickers, Google (GOOGL) and the S&amp;P 500 index (^GSPC). Google is a major technological company and the S&amp;P 500 or the Standard and Poor's 500 is an index tracking the performance of the 500 large companies listed on stock exchanges in the United States (Google being on of them).</p>
+<p>We will be collecting data for the above two tickers in three intervals, hourly, daily, and monthly to analyze trends across different time periods. We will be collecting data from To get started, we can simply use the yfinance library's download function to obtain the necessary data. The function can take multiple parameters which can help us specify how we want the data presented. Some of the main ones are:</p>
+<ul>
+<li>tickers (list or string): list for multiple tickers and string for a singular ticker</li>
+<li>start (string): start date in the format YYYY-MM-DD</li>
+<li>end (string): end date in the format YYYY-MM-DD</li>
+<li>period (string): can be used instead of start and end to get a period of the most recent data (Example: 1y)</li>
+<li>interval (string): specify the interval data is provided in. Valid intervals: 1m (1 minute), 1h (1 hour), 1d (1 day), 1mo (1 month)</li>
+<li>progress (boolean): True means a progress bar of obtaining data will be shown and False means it will not</li>
+<li>auto_adjust (boolean): True means data will adjust all OHLC automatically and account for things like stock split while False will not</li>
+</ul>
+<p>To learn more about the options the yfinance library provides us with, <a href="https://pypi.org/project/yfinance/">click here</a></p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obtaining hourly, daily, and monthly data for GOOGL for the past year</span>
+<span class="n">hourly_GOOGL</span> <span class="o">=</span> <span class="n">yfin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;GOOGL&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;365d&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s2">&quot;1h&quot;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">daily_GOOGL</span> <span class="o">=</span> <span class="n">yfin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;GOOGL&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;5y&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s2">&quot;1d&quot;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">monthly_GOOGL</span> <span class="o">=</span> <span class="n">yfin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;GOOGL&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;5y&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s2">&quot;1mo&quot;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Obtaining hourly, daily, and monthly data for S&amp;P 500 for the past year</span>
+<span class="n">hourly_GSPC</span> <span class="o">=</span> <span class="n">yfin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;^GSPC&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;365d&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s2">&quot;1h&quot;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">daily_GSPC</span> <span class="o">=</span> <span class="n">yfin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;^GSPC&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;5y&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s2">&quot;1d&quot;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">monthly_GSPC</span> <span class="o">=</span> <span class="n">yfin</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;^GSPC&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s2">&quot;5y&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s2">&quot;1mo&quot;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We have now obtained hourly data for the past year along with daily and monthly data for the past 5 years. This should be enough information for us to conduct our analysis and identify trends. Make sure to pay special attention to the values you input for parameters to ensure you are receiving data as expected.</p>
+<p>Next, let's take a look at what the data we have collected looks like.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-11-30 09:30:00-05:00</th>
+      <td>1776.510010</td>
+      <td>1780.239990</td>
+      <td>1759.030029</td>
+      <td>1760.839844</td>
+      <td>270458</td>
+    </tr>
+    <tr>
+      <th>2020-11-30 10:30:00-05:00</th>
+      <td>1759.300049</td>
+      <td>1760.520020</td>
+      <td>1748.510010</td>
+      <td>1753.694946</td>
+      <td>155822</td>
+    </tr>
+    <tr>
+      <th>2020-11-30 11:30:00-05:00</th>
+      <td>1752.670044</td>
+      <td>1754.204956</td>
+      <td>1749.140015</td>
+      <td>1754.204956</td>
+      <td>105271</td>
+    </tr>
+    <tr>
+      <th>2020-11-30 12:30:00-05:00</th>
+      <td>1754.405029</td>
+      <td>1754.890015</td>
+      <td>1749.854980</td>
+      <td>1751.089966</td>
+      <td>103912</td>
+    </tr>
+    <tr>
+      <th>2020-11-30 13:30:00-05:00</th>
+      <td>1750.420044</td>
+      <td>1755.650024</td>
+      <td>1748.770020</td>
+      <td>1754.849976</td>
+      <td>103848</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-05-12</th>
+      <td>957.849976</td>
+      <td>957.979980</td>
+      <td>952.059998</td>
+      <td>955.140015</td>
+      <td>1214900</td>
+    </tr>
+    <tr>
+      <th>2017-05-15</th>
+      <td>955.289978</td>
+      <td>962.700012</td>
+      <td>952.820007</td>
+      <td>959.219971</td>
+      <td>1337700</td>
+    </tr>
+    <tr>
+      <th>2017-05-16</th>
+      <td>963.549988</td>
+      <td>965.900024</td>
+      <td>960.349976</td>
+      <td>964.609985</td>
+      <td>1101500</td>
+    </tr>
+    <tr>
+      <th>2017-05-17</th>
+      <td>959.700012</td>
+      <td>960.989990</td>
+      <td>940.059998</td>
+      <td>942.169983</td>
+      <td>2449100</td>
+    </tr>
+    <tr>
+      <th>2017-05-18</th>
+      <td>943.200012</td>
+      <td>954.179993</td>
+      <td>941.270020</td>
+      <td>950.500000</td>
+      <td>1800500</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-06-01</th>
+      <td>990.960022</td>
+      <td>1008.609985</td>
+      <td>929.599976</td>
+      <td>929.679993</td>
+      <td>44085300</td>
+    </tr>
+    <tr>
+      <th>2017-07-01</th>
+      <td>933.219971</td>
+      <td>1006.190002</td>
+      <td>915.309998</td>
+      <td>945.500000</td>
+      <td>41908600</td>
+    </tr>
+    <tr>
+      <th>2017-08-01</th>
+      <td>947.809998</td>
+      <td>957.200012</td>
+      <td>918.599976</td>
+      <td>955.239990</td>
+      <td>32846200</td>
+    </tr>
+    <tr>
+      <th>2017-09-01</th>
+      <td>957.469971</td>
+      <td>975.809998</td>
+      <td>924.510010</td>
+      <td>973.719971</td>
+      <td>29626200</td>
+    </tr>
+    <tr>
+      <th>2017-10-01</th>
+      <td>975.650024</td>
+      <td>1063.619995</td>
+      <td>961.950012</td>
+      <td>1033.040039</td>
+      <td>36853800</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>From the above dataframes we can note a couple of things. All of our dataframes are indexed using the date or date and time (for the hourly dataframes). We can also notice in the daily_GOOGL dataframe, the data for 2017-05-13 and 2017-05-14 is missing. Missing values in the data obtained could be due to a number of reasons including holidays, the market closed early, or data is simply missing and was not recorded.</p>
+<p>By looking at the data, we are able to identify different aspects that we will need to modify and process for easier analysis in further steps. All of this occurs in the second step of the data science pipeline, data cleaning and processing.</p>
+<h3 id="4.-Data-Cleaning-&amp;-Processing">4. Data Cleaning &amp; Processing<a class="anchor-link" href="#4.-Data-Cleaning-&amp;-Processing">&#182;</a></h3><p>As identified above, there are a couple of steps we need to take before we will be able to analyze our data for trends. First, we will get rid of any null or missing values in our data as they will not be useful in analysis. Second, we will remove indexing by date and rename all columns for standardization of data. Third, we will label our dataframes with the hour of the day, day of the week, and month of the year for the hourly, daily, and monthly dataframes respectively.</p>
+<p>Once we have processed and cleaned our dataframes for easier readability and analysis, we will modify them with other features such as percent change since open to give us a better sense of how the stock prices change over time. We will also compute averages for all of the data points as with so many raw data points, visualization will not provide us with actionable information and seeing trends will be much harder.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Removing null values from our dataframes </span>
+<span class="n">hourly_GOOGL</span> <span class="o">=</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">daily_GOOGL</span> <span class="o">=</span> <span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">monthly_GOOGL</span> <span class="o">=</span> <span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">hourly_GSPC</span> <span class="o">=</span> <span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">daily_GSPC</span> <span class="o">=</span> <span class="n">daily_GSPC</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">monthly_GSPC</span> <span class="o">=</span> <span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, we will resent indices and relabel the columns</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Resetting index to remove indexing by date</span>
+<span class="n">hourly_GOOGL</span> <span class="o">=</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">daily_GOOGL</span> <span class="o">=</span> <span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">monthly_GOOGL</span> <span class="o">=</span> <span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">hourly_GSPC</span> <span class="o">=</span> <span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">daily_GSPC</span> <span class="o">=</span> <span class="n">daily_GSPC</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">monthly_GSPC</span> <span class="o">=</span> <span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># Renaming Columns for standardization across dataframes</span>
+<span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Close&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume&quot;</span><span class="p">]</span>
+<span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Close&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume&quot;</span><span class="p">]</span>
+<span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Close&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume&quot;</span><span class="p">]</span>
+
+<span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Close&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume&quot;</span><span class="p">]</span>
+<span class="n">daily_GSPC</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Close&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume&quot;</span><span class="p">]</span>
+<span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Close&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume&quot;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we will define three functions that will help us label our dataframes by the hour, weekday, and month</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># function that will label a dataframe by hour</span>
+<span class="k">def</span> <span class="nf">label_by_hour</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="c1"># Will hold the labels for hours, should have values from 0 (for 9:30 am), 1 (10:30am), ..., to 6 (3:30 pm)</span>
+  <span class="n">hours</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="c1"># First hour already put into array </span>
+  <span class="n">hour</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">hours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span>
+  <span class="c1"># Start iterating from the first row of the dataframe</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="c1"># If we are in the same day, increment hour, otherwise rest hour</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">==</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">weekday</span><span class="p">()):</span>
+      <span class="n">hour</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="n">hours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">hour</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">hours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span>  
+      
+  <span class="c1"># Appending the hour label array to the dataframe and returning a new dataframe</span>
+  <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Hour&quot;</span><span class="p">,</span> <span class="n">hours</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># function that will label a dataframe by weekday</span>
+<span class="k">def</span> <span class="nf">label_by_weekday</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="c1"># Will hold the labels for days, should have values from 0 (Monday), 1 (Tuesday), ..., 4 (Friday)</span>
+  <span class="c1"># Note, the stock market is not open on weekends</span>
+  <span class="n">days</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="c1"># Iterate through the dataframe to get the weekdays and append to the days label array</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">days</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
+      
+  <span class="c1"># Appending the days label array to the dataframe and returning a new dataframe</span>
+  <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Weekday&quot;</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">df</span>
+  
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># function that will label a dataframe by month</span>
+<span class="k">def</span> <span class="nf">label_by_month</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="c1"># Will hold the labels for months, should have values from 0 (January), 1 (February), ..., 12 (December)</span>
+  <span class="n">months</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="c1"># Iterate through the dataframe to get the months and append to the months label array</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">months</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+      
+  <span class="c1"># Appending the month label array to the dataframe and returning a new dataframe</span>
+  <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">months</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">df</span>
+  
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that we have defined functions for labelling our dataframes, we can go ahead and use them to label our stock data. After doing so, we should also verify that there were no errors while labelling our data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hourly_GOOGL</span> <span class="o">=</span> <span class="n">label_by_hour</span><span class="p">(</span><span class="n">hourly_GOOGL</span><span class="p">)</span>
+<span class="n">hourly_GSPC</span> <span class="o">=</span> <span class="n">label_by_hour</span><span class="p">(</span><span class="n">hourly_GSPC</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, let's verify that labelling by hour was appropriately done</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hourly_GOOGL</span><span class="p">[</span><span class="s2">&quot;Hour&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hourly_GSPC</span><span class="p">[</span><span class="s2">&quot;Hour&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[0 1 2 3 4 5 6 7]
+[0 1 2 3 4 5 6 7]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Here, for both dataframes we notice a value of 7 which should not be present as the stock market is only open for the 6 hours. To see why this may be happening, let's further examine our dataframes.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Hour</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2545</th>
+      <td>2022-05-11 12:30:00-04:00</td>
+      <td>3</td>
+      <td>2283.570068</td>
+      <td>2295.782715</td>
+      <td>2277.070068</td>
+      <td>2282.580078</td>
+      <td>229772</td>
+    </tr>
+    <tr>
+      <th>2546</th>
+      <td>2022-05-11 13:30:00-04:00</td>
+      <td>4</td>
+      <td>2282.475098</td>
+      <td>2305.439941</td>
+      <td>2272.389893</td>
+      <td>2298.979980</td>
+      <td>228361</td>
+    </tr>
+    <tr>
+      <th>2547</th>
+      <td>2022-05-11 14:30:00-04:00</td>
+      <td>5</td>
+      <td>2301.114990</td>
+      <td>2314.539795</td>
+      <td>2282.010010</td>
+      <td>2287.429932</td>
+      <td>194230</td>
+    </tr>
+    <tr>
+      <th>2548</th>
+      <td>2022-05-11 15:30:00-04:00</td>
+      <td>6</td>
+      <td>2287.060059</td>
+      <td>2291.030029</td>
+      <td>2267.120117</td>
+      <td>2272.969971</td>
+      <td>273244</td>
+    </tr>
+    <tr>
+      <th>2549</th>
+      <td>2022-05-11 16:00:00-04:00</td>
+      <td>7</td>
+      <td>2272.050049</td>
+      <td>2272.050049</td>
+      <td>2272.050049</td>
+      <td>2272.050049</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As we can see, the last row collected data for the end of the day at 4pm. We should also notice that the volume in that row is 0. This looks like an erroneous entry, so we will remove the row from our GOOGL dataframe before moving forward with processing our data. We will do the same for the GSPC dataframe.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hourly_GOOGL</span> <span class="o">=</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">hourly_GSPC</span> <span class="o">=</span> <span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, we will label our daily and monthly dataframes</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">daily_GOOGL</span> <span class="o">=</span> <span class="n">label_by_weekday</span><span class="p">(</span><span class="n">daily_GOOGL</span><span class="p">)</span>
+<span class="n">daily_GSPC</span> <span class="o">=</span> <span class="n">label_by_weekday</span><span class="p">(</span><span class="n">daily_GSPC</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, let's verify that our labelling was appropriately done.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">daily_GOOGL</span><span class="p">[</span><span class="s2">&quot;Weekday&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daily_GSPC</span><span class="p">[</span><span class="s2">&quot;Weekday&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[4 0 1 2 3]
+[4 0 1 2 3]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In this case, looks like the labels were appropriately assigned. Lastly, we will label our monthly dataframes</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">monthly_GOOGL</span> <span class="o">=</span> <span class="n">label_by_month</span><span class="p">(</span><span class="n">monthly_GOOGL</span><span class="p">)</span>
+<span class="n">monthly_GSPC</span> <span class="o">=</span> <span class="n">label_by_month</span><span class="p">(</span><span class="n">monthly_GSPC</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Again, let's verify that the labelling was appropriately done.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">monthly_GOOGL</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">monthly_GSPC</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[ 6  7  8  9 10 11 12  1  2  3  4  5]
+[ 6  7  8  9 10 11 12  1  2  3  4  5]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that we have processed, cleaned, and labelled our dataframes, we can move forward with modifying them with other information that would be helpful in understanding the data such as percent change since open.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculating percent change since open for the hourly dataframes</span>
+
+<span class="c1"># Arrays to hold pct_change, will be appended to dataframe</span>
+<span class="n">pct_change_GOOGL</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pct_change_GSPC</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Providing initial values based on difference between opening and closing prices</span>
+<span class="n">pct_change_GOOGL</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">pct_change_GSPC</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculating percent change and appending to array for GOOGL</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hourly_GOOGL</span><span class="p">)):</span>
+  <span class="n">change</span> <span class="o">=</span> <span class="p">((</span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">pct_change_GOOGL</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+  
+<span class="c1"># Calculating percent change and appending to array for GSPC</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hourly_GSPC</span><span class="p">)):</span>
+  <span class="n">change</span> <span class="o">=</span> <span class="p">((</span><span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">pct_change_GSPC</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+  
+<span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pct_change_open&quot;</span><span class="p">,</span> <span class="n">pct_change_GOOGL</span><span class="p">)</span>
+<span class="n">hourly_GSPC</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pct_change_open&quot;</span><span class="p">,</span> <span class="n">pct_change_GSPC</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculating percent change since open for the daily dataframes</span>
+
+<span class="c1"># Arrays to hold pct_change, will be appended to dataframe</span>
+<span class="n">pct_change_GOOGL</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pct_change_GSPC</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Providing initial values based on difference between opening and closing prices</span>
+<span class="n">pct_change_GOOGL</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">pct_change_GSPC</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">daily_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">daily_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">daily_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculating percent change and appending to array for GOOGL</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">daily_GOOGL</span><span class="p">)):</span>
+  <span class="n">change</span> <span class="o">=</span> <span class="p">((</span><span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">pct_change_GOOGL</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+  
+<span class="c1"># Calculating percent change and appending to array for GSPC</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">daily_GSPC</span><span class="p">)):</span>
+  <span class="n">change</span> <span class="o">=</span> <span class="p">((</span><span class="n">daily_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">daily_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">daily_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">pct_change_GSPC</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+  
+<span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pct_change_open&quot;</span><span class="p">,</span> <span class="n">pct_change_GOOGL</span><span class="p">)</span>
+<span class="n">daily_GSPC</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pct_change_open&quot;</span><span class="p">,</span> <span class="n">pct_change_GSPC</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculating percent change since open for the monthly dataframes</span>
+
+<span class="c1"># Arrays to hold pct_change, will be appended to dataframe</span>
+<span class="n">pct_change_GOOGL</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pct_change_GSPC</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Providing initial values based on difference between opening and closing prices</span>
+<span class="n">pct_change_GOOGL</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">pct_change_GSPC</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculating percent change and appending to array for GOOGL</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">monthly_GOOGL</span><span class="p">)):</span>
+  <span class="n">change</span> <span class="o">=</span> <span class="p">((</span><span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">pct_change_GOOGL</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+  
+<span class="c1"># Calculating percent change and appending to array for GSPC</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">monthly_GSPC</span><span class="p">)):</span>
+  <span class="n">change</span> <span class="o">=</span> <span class="p">((</span><span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Open&quot;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+  <span class="n">pct_change_GSPC</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
+  
+<span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pct_change_open&quot;</span><span class="p">,</span> <span class="n">pct_change_GOOGL</span><span class="p">)</span>
+<span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Pct_change_open&quot;</span><span class="p">,</span> <span class="n">pct_change_GSPC</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that we have calculated percent change since open for all of our dataframes, we can go ahead and calculate averages for all the columsn in each dataframe. We will want to group this by the labels we had created previously (Hour for hourly dataframes, Weekday for weekly dataframes, and Month for monthly dataframes).</p>
+<p>After doing this, we should expect to see 7 groupings for the hourly dataframes (0 - 6 hours), 5 groupings for weekdays (1 - 5), and 12 groupings for months (1-12).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Here, we are using the groupby method to create the groups using the Hour column and then calculating the mean for each group</span>
+<span class="n">avg_hourly_GOOGL</span> <span class="o">=</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Hour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">avg_daily_GOOGL</span> <span class="o">=</span> <span class="n">daily_GOOGL</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Weekday&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">avg_monthly_GOOGL</span> <span class="o">=</span> <span class="n">monthly_GOOGL</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">avg_hourly_GSPC</span> <span class="o">=</span> <span class="n">hourly_GOOGL</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Hour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">avg_daily_GSPC</span> <span class="o">=</span> <span class="n">daily_GSPC</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Weekday&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">avg_monthly_GSPC</span> <span class="o">=</span> <span class="n">monthly_GSPC</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Above we used the groupby method to help average our data. Another way to do this is by using SQL queries. I will demonstrate an example below but we will continue using our averages from above for the rest of the tutorial.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Using SELECT we are identifying the columns we would like to pick from the dataframe</span>
+<span class="c1"># Then we are calculating the average of the columns that we want and storing then with a name using AS</span>
+<span class="c1"># FROM is used to specify the dataframe</span>
+<span class="c1"># GROUP BY will group our data according to the argument passed in</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT Hour, AVG(Pct_change_open) AS Pct_change_open, AVG(Open) AS Open, AVG(High) AS High,</span>
+<span class="s2">          AVG(Low) as Low, AVG(Close) AS Close, AVG(Volume) as Volume</span>
+<span class="s2">          FROM hourly_GOOGL GROUP BY Hour&quot;&quot;&quot;</span>
+          
+<span class="n">psql</span><span class="o">.</span><span class="n">sqldf</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">locals</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hour</th>
+      <th>Pct_change_open</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.078405</td>
+      <td>2480.727828</td>
+      <td>2495.993387</td>
+      <td>2463.575165</td>
+      <td>2479.307211</td>
+      <td>378954.323288</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>-0.046587</td>
+      <td>2479.299441</td>
+      <td>2489.112114</td>
+      <td>2468.620930</td>
+      <td>2479.577758</td>
+      <td>191860.638356</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.018169</td>
+      <td>2479.696062</td>
+      <td>2487.805832</td>
+      <td>2470.926309</td>
+      <td>2479.734508</td>
+      <td>150853.452055</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.008489</td>
+      <td>2479.738733</td>
+      <td>2486.634154</td>
+      <td>2472.360385</td>
+      <td>2479.596177</td>
+      <td>125698.041096</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.003947</td>
+      <td>2480.721879</td>
+      <td>2487.869113</td>
+      <td>2473.348817</td>
+      <td>2480.630816</td>
+      <td>130146.732782</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>-0.000142</td>
+      <td>2480.719832</td>
+      <td>2488.209279</td>
+      <td>2473.519914</td>
+      <td>2481.294133</td>
+      <td>151899.837466</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0.020722</td>
+      <td>2481.293319</td>
+      <td>2487.951881</td>
+      <td>2473.653418</td>
+      <td>2480.434807</td>
+      <td>236396.550964</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that we have finished processing our data, we can move onto the next step of the data science pipeline to Visualization.</p>
+<h3 id="5.-Visualization">5. Visualization<a class="anchor-link" href="#5.-Visualization">&#182;</a></h3><p>We will now plot our data and try to identify trends using both raw and averaged data. In order to plot our findings, we can use many libraries like seaborn, matplotlib, plotly, etc. Here, I will demonstrate using two of the above libraries, matplotlib and seaborn.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
      </div>
